@@ -1,0 +1,55 @@
+﻿@page "/users"
+@layout MainLayout
+@page "/uzytkownicy"
+@using Domain.Abstractions;
+@using Domain.Model;
+@inject IUserRepository repository
+@inject IMessageService messageService
+
+<h3>Users</h3>
+
+<p>Hello @message</p>
+
+
+<button @onclick=@(()=>ChangeMessage("#"))>Change message</button>
+@if (users is null)
+{
+    <em>Loading...</em>
+}
+else
+{
+    <ul>
+        @foreach (var user in users)
+        {
+            <li>@user.FirstName @user.LastName (@user.Email)</li>
+        }
+    </ul>
+}
+
+@code {
+    string message = "Users";
+
+    IEnumerable<User> users;
+
+    // [Inject]
+    // public IUserRepository repository { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await repository.GetAllAsync();
+    }
+
+
+    void ChangeMessage(string separator)
+    {
+        message += separator;
+
+        //   this.StateHasChanged();
+
+        var message2 = new HtmlMessage { Content = message };
+
+        messageService.Send(message2);
+    }
+
+
+}
