@@ -12,11 +12,8 @@
 <p>Hello @message</p>
 
 
+<SearchPanel OnSearch="Search" />
 
-<div>
-    <input type="search" @bind-value="filter" />
-    <button @onclick="Search">Search</button>
-</div>
 
 <button @onclick=@(()=>ChangeMessage("#"))>Change message</button>
 @if (users is null)
@@ -40,14 +37,17 @@ else
     </EntityTableTemplate>
 }
 
-@code {
-    string filter;
+    @code {
 
-    string message = "Users";
 
-    void Search()
+        string message = "Users";
+
+    Task Search(string filter)
     {
-        
+        // TODO: search by filter
+
+
+        return Task.CompletedTask;
     }
 
     IEnumerable<User> users;
