@@ -12,6 +12,12 @@
 <p>Hello @message</p>
 
 
+
+<div>
+    <input type="search" @bind-value="filter" />
+    <button @onclick="Search">Search</button>
+</div>
+
 <button @onclick=@(()=>ChangeMessage("#"))>Change message</button>
 @if (users is null)
 {
@@ -35,7 +41,14 @@ else
 }
 
 @code {
+    string filter;
+
     string message = "Users";
+
+    void Search()
+    {
+        
+    }
 
     IEnumerable<User> users;
 
