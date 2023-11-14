@@ -19,5 +19,6 @@ builder.Services.AddSingleton<IEnumerable<User>>(_ => new List<User>
             new User { Id = 3, FirstName = "Bob", LastName = "Smith",  Email = "bob@domain.com"},
         });
 
+builder.Services.AddSingleton<IMessageService, FakeMessageService>();
 
 await builder.Build().RunAsync();
