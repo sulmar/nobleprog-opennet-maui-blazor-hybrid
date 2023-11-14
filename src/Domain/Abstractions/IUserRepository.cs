@@ -10,6 +10,7 @@ namespace Domain.Abstractions;
 public interface IUserRepository
 {
     Task<IEnumerable<User>> GetAllAsync();
+    Task<User> GetById(int id);
 }
 
 public class HtmlMessage : Message
