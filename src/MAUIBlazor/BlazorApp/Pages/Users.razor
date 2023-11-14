@@ -18,12 +18,30 @@
 }
 else
 {
-    <ul>
-        @foreach (var user in users)
-        {
-            <li>@user.FirstName @user.LastName (@user.Email)</li>
-        }
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var user in users)
+            {
+                <tr>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Email</td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+        </tfoot>
+
+    </table>
 }
 
 @code {
