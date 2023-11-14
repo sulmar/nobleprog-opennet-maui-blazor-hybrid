@@ -1,14 +1,11 @@
 ﻿using Api.DTO;
 using Domain.Model;
+using Riok.Mapperly.Abstractions;
 
 namespace Api.Mappers;
 
-public static class UserDTOMapper
+[Mapper]
+public static partial class UserDTOMapper
 {
-    public static UserDTO ToDTO(this User user) => Map(user);
-
-    private static UserDTO Map(User u) => new(
-                       u.FirstName,
-                       u.LastName,
-                       u.Email);
+    public static partial UserDTO ToDTO(this User user);
 }
