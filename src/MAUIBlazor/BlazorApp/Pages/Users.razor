@@ -19,7 +19,7 @@
 }
 else
 {
-    <UserTableTemplate Users="@users">
+    <EntityTableTemplate Items="@users">
         <HeaderTemplate>
             <th>First name</th>
             <th>Last name</th>
@@ -31,13 +31,15 @@ else
             <td>@user.LastName</td>
             <td>@user.Email</td>
         </RowTemplate>
-    </UserTableTemplate>
+    </EntityTableTemplate>
 }
 
 @code {
     string message = "Users";
 
     IEnumerable<User> users;
+
+    IEnumerable<Customer> customers;
 
     // [Inject]
     // public IUserRepository repository { get; set; }
