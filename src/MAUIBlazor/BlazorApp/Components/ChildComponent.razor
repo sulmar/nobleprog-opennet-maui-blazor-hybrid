@@ -1,0 +1,18 @@
+﻿<h3>Child Component</h3>
+
+<div class="alert alert-@AlertStyle">
+    @Message @Age
+</div>
+
+@code {
+
+    [CascadingParameter(Name = "Message")]
+    public string Message { get; set; }
+
+    [CascadingParameter(Name = "AlertStyle")]
+    public string AlertStyle { get; set; }
+
+    [CascadingParameter]
+    public int Age  { get; set; }
+
+}
