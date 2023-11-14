@@ -9,4 +9,9 @@ public class DbUserRepository : IUserRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<User> GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

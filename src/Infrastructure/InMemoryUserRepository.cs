@@ -16,4 +16,9 @@ public class InMemoryUserRepository : IUserRepository
     {
         return Task.FromResult<IEnumerable<User>>(_users.Values);
     }
+
+    public Task<User> GetById(int id)
+    {
+        return Task.FromResult(_users[id]);
+    }
 }
