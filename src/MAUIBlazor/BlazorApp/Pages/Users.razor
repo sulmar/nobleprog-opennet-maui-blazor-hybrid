@@ -1,11 +1,14 @@
 ﻿@page "/users"
 @layout MainLayout
 @page "/uzytkownicy"
+@using Api.DTO;
+@using BlazorApp.Services;
 @using Domain.Abstractions
 @using Domain.Model
 @using BlazorApp.Components
 @inject IUserRepository repository
 @inject IMessageService messageService
+@inject UserApiService Api 
 
 <h3>Users</h3>
 
@@ -37,10 +40,10 @@ else
     </EntityTableTemplate>
 }
 
-    @code {
+@code {
 
 
-        string message = "Users";
+    string message = "Users";
 
     Task Search(string filter)
     {
@@ -50,16 +53,12 @@ else
         return Task.CompletedTask;
     }
 
-    IEnumerable<User> users;
+    IEnumerable<UserDTO>? users;
 
-    IEnumerable<Customer> customers;
-
-    // [Inject]
-    // public IUserRepository repository { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        users = await repository.GetAllAsync();
+        users = await Api.GetAllAsync();
     }
 
 
