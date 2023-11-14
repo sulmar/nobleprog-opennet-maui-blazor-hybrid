@@ -1,8 +1,9 @@
 ﻿@page "/users"
 @layout MainLayout
 @page "/uzytkownicy"
-@using Domain.Abstractions;
-@using Domain.Model;
+@using Domain.Abstractions
+@using Domain.Model
+@using BlazorApp.Components
 @inject IUserRepository repository
 @inject IMessageService messageService
 
@@ -18,30 +19,19 @@
 }
 else
 {
-    <table>
-        <thead>
-            <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Email</th>
-            </tr>
-        </thead>
+    <UserTableTemplate Users="@users">
+        <HeaderTemplate>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
 
-        <tbody>
-            @foreach (var user in users)
-            {
-                <tr>
-                    <td>@user.FirstName</td>
-                    <td>@user.LastName</td>
-                    <td>@user.Email</td>
-                </tr>
-            }
-        </tbody>
-
-        <tfoot>
-        </tfoot>
-
-    </table>
+        </HeaderTemplate>
+        <RowTemplate Context="user">
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.Email</td>
+        </RowTemplate>
+    </UserTableTemplate>
 }
 
 @code {
