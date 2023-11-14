@@ -16,8 +16,19 @@ builder.Services.AddSingleton<IEnumerable<User>>(_ => new List<User>
             new User { Id = 3, FirstName = "Bob", LastName = "Smith",  Email = "bob@domain.com", HashedPassword = "abc"},
         });
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("https://localhost:7171", "http://localhost:5003");
+        policy.WithMethods("GET");
+        policy.AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
+app.UseCors();
 
 app.UseFastEndpoints();
 app.Run();
