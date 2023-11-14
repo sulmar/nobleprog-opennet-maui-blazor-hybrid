@@ -1,3 +1,21 @@
 ﻿@page "/"
 
 <h1>Hello, world!</h1>
+
+
+<CascadingValue Value="alertStyle" Name="AlertStyle">
+    <CascadingValue Value="age">
+        <CascadingValue Value="message" Name="Message">
+            <ParentComponent />
+        </CascadingValue>
+    </CascadingValue>
+</CascadingValue>
+
+
+@code {
+    string message = "Hello World";
+
+    string alertStyle = "info";
+
+    int age = 18;
+}
