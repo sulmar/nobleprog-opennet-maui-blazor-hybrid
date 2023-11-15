@@ -15,7 +15,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 // dotnet add package Microsoft.Extensions.Http
 builder.Services.AddHttpClient<UserApiService>();
-
 builder.Services.AddHttpClient<CustomerApiService>();
 
 builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();

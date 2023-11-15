@@ -1,11 +1,38 @@
 ﻿@page "/customers/edit/{id:int}"
 @using Api.DTO;
 @using BlazorApp.Services;
+@using Domain.Model;
 @inject CustomerApiService Api
 
 <h3>Edit</h3>
 
+
+@if (customer is not null)
+{
+    <EditForm Model="customer" OnValidSubmit="@HandleValidSubmit">
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <label for="first_name">First name</label>
+
+        <InputText id="first_name" @bind-Value=customer.FirstName></InputText>
+        <ValidationMessage For="()=>customer.FirstName" />
+
+        <label for="last_name">Last name</label>
+        <InputText id="last_name" @bind-Value=customer.LastName></InputText>
+
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </EditForm>
+}
+
 @code {
+    async Task HandleValidSubmit()
+    {
+
+    }
 
     [Parameter]
     public int Id { get; set; }
