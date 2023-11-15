@@ -7,5 +7,8 @@ public class UserApiService
 {
     private readonly HttpClient client;
     public UserApiService(HttpClient client) => this.client = client;
-    public Task<IEnumerable<UserDTO>?> GetAllAsync() => client.GetFromJsonAsync<IEnumerable<UserDTO>>("/api/users");
+    public Task<IEnumerable<UserDTO>?> GetAllAsync()
+    {
+        return client.GetFromJsonAsync<IEnumerable<UserDTO>>("/api/users");
+    }
 }
