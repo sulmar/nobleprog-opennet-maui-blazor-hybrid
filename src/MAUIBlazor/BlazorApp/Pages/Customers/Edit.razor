@@ -16,7 +16,7 @@
 
         <label for="first_name">First name</label>
 
-        <InputText id="first_name" @bind-Value=customer.FirstName></InputText>
+        <InputText id="first_name" @bind-Value=customer.FirstName @ref=firstNameElementReference></InputText>
         <ValidationMessage For="()=>customer.FirstName" />
 
         <label for="last_name">Last name</label>
@@ -29,6 +29,9 @@
 }
 
 @code {
+    private InputText firstNameElementReference;
+
+
     async Task HandleValidSubmit()
     {
 
@@ -42,6 +45,12 @@
     protected override async Task OnParametersSetAsync()
     {
         customer = await Api.GetByIdAsync(Id);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstNameElementReference is not null)
+            await firstNameElementReference.Element.Value.FocusAsync();
     }
 
 
