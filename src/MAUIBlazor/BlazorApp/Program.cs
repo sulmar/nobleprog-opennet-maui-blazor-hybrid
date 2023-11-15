@@ -10,13 +10,13 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7014") });
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 
 // dotnet add package Microsoft.Extensions.Http
-builder.Services.AddHttpClient<UserApiService>(sp => sp.BaseAddress = new Uri("https://localhost:7014"));
+builder.Services.AddHttpClient<UserApiService>();
 
-builder.Services.AddHttpClient<CustomerApiService>(sp => sp.BaseAddress = new Uri("https://localhost:7014"));
+builder.Services.AddHttpClient<CustomerApiService>();
 
 builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
 builder.Services.AddSingleton<IEnumerable<User>>(_ => new List<User>
