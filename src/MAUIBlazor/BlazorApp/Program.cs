@@ -1,5 +1,6 @@
 using BlazorApp;
 using BlazorApp.Services;
+using Blazored.LocalStorage;
 using Domain.Abstractions;
 using Domain.Model;
 using Infrastructure;
@@ -29,5 +30,7 @@ builder.Services.AddSingleton<IMessageService, FakeMessageService>();
 
 builder.Services.AddScoped<UserApiService>();
 builder.Services.AddScoped<CustomerApiService>();
+
+builder.Services.AddBlazoredLocalStorage();
 
 await builder.Build().RunAsync();

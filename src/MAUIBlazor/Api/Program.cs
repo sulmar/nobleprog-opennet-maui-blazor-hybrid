@@ -1,3 +1,5 @@
+using Api.Fakers;
+using Bogus;
 using Domain.Abstractions;
 using Domain.Model;
 using FastEndpoints;
@@ -10,13 +12,14 @@ builder.Services.AddFastEndpoints();
 
 builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
 builder.Services.AddSingleton<ICustomerRepository, InMemoryCustomerRepository>();
+builder.Services.AddSingleton<Faker<User>, UserFaker>();
 
-builder.Services.AddSingleton<IEnumerable<User>>(_ => new List<User>
-        {
-            new User { Id = 1, FirstName = "John", LastName = "Smith", Email = "john@domain.com", HashedPassword = "abc"},
-            new User { Id = 2, FirstName = "Kate", LastName = "Smith", Email = "kate@domain.com", HashedPassword = "abc"},
-            new User { Id = 3, FirstName = "Bob", LastName = "Smith",  Email = "bob@domain.com", HashedPassword = "abc"},
-        });
+builder.Services.AddSingleton<IEnumerable<User>>(sp =>
+{
+    var faker = sp.GetRequiredService<Faker<User>>();
+
+    return faker.Generate(1000);
+});
 
 builder.Services.AddSingleton<IEnumerable<Customer>>(_ => new List<Customer>
         {

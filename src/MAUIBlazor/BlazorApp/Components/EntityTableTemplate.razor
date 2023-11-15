@@ -1,6 +1,7 @@
 ﻿@typeparam TEntity 
 
 @using Domain.Model;
+@using Microsoft.AspNetCore.Components.Web.Virtualization
 <table>
     <thead>
         <tr>
@@ -9,11 +10,12 @@
     </thead>
 
     <tbody>
-        @foreach (var item in Items)
-        {
+        <Virtualize Items="@Items?.ToList()" Context="item">
             <tr>
                 @RowTemplate(item)
             </tr>
+        </Virtualize>
+
         }
     </tbody>
 
