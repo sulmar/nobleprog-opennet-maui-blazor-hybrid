@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Abstractions;
 
-public interface IUserRepository
+public interface IUserRepository :  IEntityRepository<User>
 {
-    Task<IEnumerable<User>> GetAllAsync();
-    Task<User> GetById(int id);
 }
 
-public class HtmlMessage : Message
-{
 
-}

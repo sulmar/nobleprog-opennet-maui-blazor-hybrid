@@ -3,22 +3,9 @@ using Domain.Model;
 
 namespace Infrastructure;
 
-public class InMemoryUserRepository : IUserRepository
+public class InMemoryUserRepository : InMemoryEntityRepository<User>, IUserRepository
 {
-     private IDictionary<int, User> _users;
-
-    public InMemoryUserRepository(IEnumerable<User> users)
+    public InMemoryUserRepository(IEnumerable<User> items) : base(items)
     {
-        this._users = users.ToDictionary(p=>p.Id);
-    }
-
-    public Task<IEnumerable<User>> GetAllAsync()
-    {
-        return Task.FromResult<IEnumerable<User>>(_users.Values);
-    }
-
-    public Task<User> GetById(int id)
-    {
-        return Task.FromResult(_users[id]);
     }
 }

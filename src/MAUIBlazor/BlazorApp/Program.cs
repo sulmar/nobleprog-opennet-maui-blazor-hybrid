@@ -16,6 +16,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 // dotnet add package Microsoft.Extensions.Http
 builder.Services.AddHttpClient<UserApiService>(sp => sp.BaseAddress = new Uri("https://localhost:7014"));
 
+builder.Services.AddHttpClient<CustomerApiService>(sp => sp.BaseAddress = new Uri("https://localhost:7014"));
+
 builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
 builder.Services.AddSingleton<IEnumerable<User>>(_ => new List<User>
         {
@@ -27,5 +29,6 @@ builder.Services.AddSingleton<IEnumerable<User>>(_ => new List<User>
 builder.Services.AddSingleton<IMessageService, FakeMessageService>();
 
 builder.Services.AddScoped<UserApiService>();
+builder.Services.AddScoped<CustomerApiService>();
 
 await builder.Build().RunAsync();

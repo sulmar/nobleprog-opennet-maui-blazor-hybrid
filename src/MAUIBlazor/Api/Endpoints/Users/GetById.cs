@@ -1,9 +1,30 @@
 ﻿using Api.DTO;
 using Api.Mappers;
 using Domain.Abstractions;
+using Domain.Model;
 using FastEndpoints;
 
 namespace Api.Endpoints.Users;
+
+public abstract class GetById<T, TDTO> : Endpoint<GetByIdRequest, T>
+    where T : BaseEntity
+{
+    private readonly IEntityRepository<T> repository;
+
+    public GetById(IEntityRepository<T> repository)
+    {
+        this.repository = repository;
+    }
+
+    public override void Configure()
+    {
+        AllowAnonymous();
+    }
+
+
+}
+
+
 
 public class GetById : Endpoint<GetByIdRequest, UserDTO>
 {

@@ -9,12 +9,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddFastEndpoints();
 
 builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
+builder.Services.AddSingleton<ICustomerRepository, InMemoryCustomerRepository>();
+
 builder.Services.AddSingleton<IEnumerable<User>>(_ => new List<User>
         {
             new User { Id = 1, FirstName = "John", LastName = "Smith", Email = "john@domain.com", HashedPassword = "abc"},
             new User { Id = 2, FirstName = "Kate", LastName = "Smith", Email = "kate@domain.com", HashedPassword = "abc"},
             new User { Id = 3, FirstName = "Bob", LastName = "Smith",  Email = "bob@domain.com", HashedPassword = "abc"},
         });
+
+builder.Services.AddSingleton<IEnumerable<Customer>>(_ => new List<Customer>
+        {
+            new Customer { Id = 1, FirstName = "John", LastName = "Smith"},
+            new Customer { Id = 2, FirstName = "Kate", LastName = "Smith"},
+            new Customer { Id = 3, FirstName = "Bob", LastName = "Smith"},
+        });
+
 
 builder.Services.AddCors(options =>
 {

@@ -1,7 +1,22 @@
-﻿@page "/customers/edit"
+﻿@page "/customers/edit/{id:int}"
+@using Api.DTO;
+@using BlazorApp.Services;
+@inject CustomerApiService Api
 
 <h3>Edit</h3>
 
 @code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private CustomerDTO customer;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        customer = await Api.GetByIdAsync(Id);
+    }
+
+
 
 }
