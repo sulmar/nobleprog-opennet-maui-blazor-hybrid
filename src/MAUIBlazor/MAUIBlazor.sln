@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "..\Domain\Domain.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "..\Infrastructure\Infrastructure.csproj", "{DC8B1AD3-2799-42FF-AC9B-42E111743C48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{3321BA49-6E26-45A3-9A1B-89915172005E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{3321BA49-6E26-45A3-9A1B-89915172005E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.DTO", "Api.DTO\Api.DTO.csproj", "{F25C1034-7990-4DCF-8181-4E013E4A911C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.DTO", "Api.DTO\Api.DTO.csproj", "{F25C1034-7990-4DCF-8181-4E013E4A911C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
