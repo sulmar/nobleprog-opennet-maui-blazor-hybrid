@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiClient.ViewModel"
+             x:Class="MauiClient.View.CounterView"
+             Title="CounterView"
+             x:DataType="{x:Type vm:CounterViewModel}"
+             >
+    <VerticalStackLayout >
+        <Label 
+            Margin="50"
+            Text="{Binding Path=CounterState.Count}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="40"
+            />
+
+        <Button Text="Increment" />
+    </VerticalStackLayout>
+</ContentPage>
