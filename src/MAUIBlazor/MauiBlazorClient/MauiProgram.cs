@@ -1,5 +1,6 @@
 ﻿using MauiBlazorClient.Data;
 using Microsoft.Extensions.Logging;
+using RazorClassLibrary.Extensions;
 
 namespace MauiBlazorClient
 {
@@ -16,6 +17,8 @@ namespace MauiBlazorClient
                 });
 
             builder.Services.AddMauiBlazorWebView();
+
+            builder.Services.AddTracker();
 
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
