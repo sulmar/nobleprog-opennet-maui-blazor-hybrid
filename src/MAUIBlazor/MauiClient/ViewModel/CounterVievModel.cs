@@ -1,4 +1,6 @@
-﻿using MauiClient.Core;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using MauiClient.Core;
 using MauiClient.Model;
 using System;
 using System.Collections.Generic;
@@ -9,21 +11,28 @@ using System.Windows.Input;
 
 namespace MauiClient.ViewModel;
 
-internal class CounterViewModel
+public abstract class BaseViewModel : ObservableObject
 {
-    public CounterState CounterState { get; set; } = new();
 
-    public ICommand IncrementCounterCommand { get; set; }
+}
+
+public partial class CounterViewModel : BaseViewModel
+{
+    [ObservableProperty]
+    private CounterState counterState = new();
 
     public CounterViewModel()
     {
         CounterState.Count = 10;
-
-        IncrementCounterCommand = new RelayCommand(IncrementCounter);
     }
 
+    [RelayCommand(CanExecute = nameof(CanIncrementCounter))]
     private void IncrementCounter()
     {
         CounterState.Count++;
+
+        IncrementCounterCommand.NotifyCanExecuteChanged();
     }
+
+    bool CanIncrementCounter() => CounterState.Count < 20;
 }

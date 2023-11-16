@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,27 +9,14 @@ using System.Threading.Tasks;
 namespace MauiClient.Model;
 
 
-public abstract class Base : INotifyPropertyChanged
+public abstract class Base : ObservableObject
 {
-    public event PropertyChangedEventHandler PropertyChanged;
 
-    protected void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
 }
 
-public class CounterState : Base
+public partial class CounterState : Base
 {
+    [ObservableProperty]
     private int count;
 
-    public int Count
-    {
-        get => count;
-        set
-        {
-            count = value;
-            OnPropertyChanged("Count");
-        }
-    }
 }
