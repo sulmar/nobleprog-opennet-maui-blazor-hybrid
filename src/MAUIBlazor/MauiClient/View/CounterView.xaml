@@ -15,6 +15,6 @@
             FontSize="40"
             />
 
-        <Button Text="Increment" />
+        <Button Text="Increment" Command="{Binding IncrementCounterCommand}" />
     </VerticalStackLayout>
 </ContentPage>
