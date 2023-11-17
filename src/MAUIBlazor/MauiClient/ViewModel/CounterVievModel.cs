@@ -29,7 +29,7 @@ public partial class CounterViewModel : BaseViewModel
     [RelayCommand(CanExecute = nameof(CanIncrementCounter))]
     private void IncrementCounter()
     {
-        CounterState.Count++;
+        CounterState.Count+=2;
 
         IncrementCounterCommand.NotifyCanExecuteChanged();
     }

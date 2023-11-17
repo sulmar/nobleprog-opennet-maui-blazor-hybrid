@@ -27,6 +27,9 @@ namespace MauiBlazorClient
 
             builder.Services.AddSingleton<WeatherForecastService>();
 
+            // Install-Package Microsoft.Extensions.Localization
+            builder.Services.AddLocalization();
+
             return builder.Build();
         }
     }

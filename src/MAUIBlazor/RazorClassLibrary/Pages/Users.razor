@@ -1,11 +1,9 @@
 ﻿@page "/users"
-@layout MainLayout
 @page "/uzytkownicy"
 @using Api.DTO;
 @using BlazorApp.Services;
 @using Domain.Abstractions
 @using Domain.Model
-@using BlazorApp.Components
 @inject IMessageService messageService
 @inject UserApiService Api
 
@@ -24,19 +22,19 @@
 }
 else
 {
-    <EntityTableTemplate Items="@users">
+  @*   <EntityTableTemplate Items="@users">
         <HeaderTemplate>
             <th>First name</th>
             <th>Last name</th>
             <th>Email</th>
 
         </HeaderTemplate>
-        <RowTemplate Context="user">
+        <RowTemplate >
             <td>@user.FirstName</td>
             <td>@user.LastName</td>
             <td>@user.Email</td>
         </RowTemplate>
-    </EntityTableTemplate>
+    </EntityTableTemplate> *@
 }
 
 @code {

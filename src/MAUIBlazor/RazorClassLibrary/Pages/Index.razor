@@ -2,7 +2,7 @@
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 
 
-<h1>Hello, world!</h1>
+<h1>Hello, world! v. 2.0</h1>
 
 
 <CascadingValue Value="alertStyle" Name="AlertStyle">
@@ -35,7 +35,7 @@
 
     private async Task IncrementCounter()
     {
-        counter++;
+        counter+=10;
         await localStorage.SetItemAsync<int>("counter", counter);
     }
 }
