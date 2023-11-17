@@ -1,0 +1,31 @@
+﻿@page "/login"
+
+@using BlazorAuthApp.Authorization;
+@using BlazorAuthApp.Model;
+@using Microsoft.AspNetCore.Components.Forms
+@inject AuthenticationStateProvider Authentication
+@inject NavigationManager Navigation
+
+<h3>Login</h3>
+
+<EditForm Model="model" OnValidSubmit="LoginAsync">
+    <InputText @bind-Value="model.Username" />
+    <InputText @bind-Value="model.Password" />
+
+    <button type="submit">Sign In</button>
+</EditForm>
+
+@code {
+
+    private LoginModel model = new();
+
+    async Task LoginAsync()
+    {
+        await ((CustomAuthenticationStateProvider)Authentication).LoginAsync(model);
+
+        Navigation.NavigateTo("/");
+    }
+
+
+
+}

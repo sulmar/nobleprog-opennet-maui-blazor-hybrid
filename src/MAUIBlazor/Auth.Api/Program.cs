@@ -8,9 +8,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IAuthService, AuthService>();
 builder.Services.AddSingleton<IUserIdentityRepository, FakeUserIdentityRepository>();
 builder.Services.AddSingleton<ITokenService, JwtTokenService>();
-builder.Services.AddSingleton<IPasswordHasher<UserIdentity>, PasswordHasher<UserIdentity>>();   
+builder.Services.AddSingleton<IPasswordHasher<UserIdentity>, PasswordHasher<UserIdentity>>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("https://localhost:7094", "http://localhost:5106");
+        policy.WithMethods("GET");
+        policy.AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
+
+app.UseCors();
 
 app.MapGet("/", () => "Hello Auth.API!");
 
