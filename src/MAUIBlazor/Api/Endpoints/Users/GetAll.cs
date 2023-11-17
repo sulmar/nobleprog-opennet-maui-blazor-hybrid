@@ -19,6 +19,7 @@ public class GetAll : EndpointWithoutRequest<IEnumerable<UserDTO>>
     {
         Roles("Admin", "developer");
         Get("/api/users");
+
     }
 
     public override async Task HandleAsync(CancellationToken ct)
