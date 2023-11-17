@@ -30,6 +30,8 @@ namespace MauiBlazorClient
             // Install-Package Microsoft.Extensions.Localization
             builder.Services.AddLocalization();
 
+            builder.Services.AddAuthorizationCore();
+
             return builder.Build();
         }
     }
