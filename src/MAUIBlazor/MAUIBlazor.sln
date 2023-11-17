@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.DTO", "Api.DTO\Api.DTO.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiClient", "MauiClient\MauiClient.csproj", "{4775EAC9-BBFB-4F94-B287-0F408EB979C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiBlazorClient", "MauiBlazorClient\MauiBlazorClient.csproj", "{0B305677-78A5-4F6E-A8EF-AA246BDBF7B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBlazorClient", "MauiBlazorClient\MauiBlazorClient.csproj", "{0B305677-78A5-4F6E-A8EF-AA246BDBF7B3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorClassLibrary", "RazorClassLibrary\RazorClassLibrary.csproj", "{5D1F515C-2E57-42CC-8142-8447CD2C22B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Api", "Auth.Api\Auth.Api.csproj", "{BEE17CBF-E26C-4752-ABCF-0226A7A8463E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{5D1F515C-2E57-42CC-8142-8447CD2C22B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D1F515C-2E57-42CC-8142-8447CD2C22B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D1F515C-2E57-42CC-8142-8447CD2C22B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEE17CBF-E26C-4752-ABCF-0226A7A8463E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEE17CBF-E26C-4752-ABCF-0226A7A8463E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEE17CBF-E26C-4752-ABCF-0226A7A8463E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEE17CBF-E26C-4752-ABCF-0226A7A8463E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
