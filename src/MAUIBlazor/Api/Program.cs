@@ -3,12 +3,19 @@ using Bogus;
 using Domain.Abstractions;
 using Domain.Model;
 using FastEndpoints;
+using FastEndpoints.Security;
 using Infrastructure;
 
 // dotnet add package FastEndpoints
+// dotnet add package FastEndpoints.Security
+
+var secretKey = "your-256-bit-secret-your-256-bit-secret-your-256-bit-secret-your-256-bit-secret";
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddFastEndpoints();
+builder.Services.AddFastEndpoints()
+    .AddJWTBearerAuth(secretKey) 
+    .AddAuthorization();
+
 
 builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
 builder.Services.AddSingleton<ICustomerRepository, InMemoryCustomerRepository>();
@@ -42,6 +49,8 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.UseCors();
+app.UseAuthentication()
+   .UseAuthorization();
 
 app.UseFastEndpoints();
 app.Run();

@@ -17,7 +17,7 @@ public class GetAll : EndpointWithoutRequest<IEnumerable<UserDTO>>
 
     public override void Configure()
     {
-        AllowAnonymous();
+        Roles("Admin", "developer");
         Get("/api/users");
     }
 
